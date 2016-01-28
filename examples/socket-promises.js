@@ -25,7 +25,7 @@ socketBob.on('error', function (error) {
 socketAlice.on('message', function (message) {
   winston.info('Alice received answer: ' + message)
   socketAlice.closeP()
-    .then(function (){
+    .then(function () {
       winston.info("Alice's socket has closed")
       return socketBob.closeP()
     })
@@ -42,7 +42,7 @@ socketBob.on('message', function (message) {
 })
 
 socketAlice.connectP()
-  .then(function (){
+  .then(function () {
     winston.info("Alice's socket is ready")
     return socketBob.connectP()
   })
