@@ -1,7 +1,7 @@
 {
   "name": "apprtc-socket",
   "version": "0.0.1",
-  "description": "Socket for transferring messages via the AppRTC backend",
+  "description": "Socket for transferring messages via the AppRtc WebSocket server",
   "main": "index.js",
   "keywords": [
     "apprtc",
