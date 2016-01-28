@@ -80,46 +80,46 @@ mySocket.connectP()
 
 ## API
 
-### `socket = AppRtcSocket.create(myId, peerId)`
+### `mySocket = socket(myId, peerId)`
 
 Create a new AppRtcSocket connection. Both interacting peers must be identified by a unique key.
 
-### `socket.connect()`
+### `mySocket.connect()`
 
 Connect to the AppRtc WebSocket server and register a connection. The id of the AppRtc room that both peers use to exchange messages is a commutative hash calculated from both peers' unique keys. This function fires a `ready` event once the registration succeeds.
 
-### `socket.connectP()`
+### `mySocket.connectP()`
 
 Connect to the AppRtc WebSocket server and register a connection. Instead of firing a `ready` event, this function returns a promise that gets fulfilled once the registration succeeds.
 
-### `socket.send(data)`
+### `mySocket.send(data)`
 
 Send text data to the connected peer. `data` should be of type
 `String`, other data types can be transformed into a `String` with `JSON.stringify`.
 
-### `socket.close()`
+### `mySocket.close()`
 
 Close a connection. Fires a `close` event once complete.
 
-### `socket.closeP()`
+### `mySocket.closeP()`
 
 Close a connection. Instead of firing a `close` event, this function returns a promise that gets fulfilled once the connection has closed.
 
 ## Events
 
-### `socket.on('ready', function () {})`
+### `mySocket.on('ready', function () {})`
 
 Fired when the socket is ready to use.
 
-### `socket.on('message', function (message) {})`
+### `mySocket.on('message', function (message) {})`
 
 Received a message from the AppRtc server. `message` is always a `String`.
 
-### `socket.on('close', function () {})`   
+### `mySocket.on('close', function () {})`   
 
 Fired when the connection has closed.   
 
-### `socket.on('error', function () {})`
+### `mySocket.on('error', function () {})`
 
 Fired when a fatal error occurs.     
 
