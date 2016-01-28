@@ -1,4 +1,4 @@
-# AppRtc-Socket
+# AppRtc Socket
 
 #### Socket using the AppRtc WebSocket server to exchange messages between *two* peers. This socket is developed to exchange lightweight signaling messages, *not* for transmitting (large) binaries.
 
