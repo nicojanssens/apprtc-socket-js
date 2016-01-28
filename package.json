@@ -1,0 +1,32 @@
+{
+  "name": "apprtc-socket",
+  "version": "0.0.1",
+  "description": "Socket for transferring messages via the AppRTC backend",
+  "main": "index.js",
+  "keywords": [
+    "apprtc",
+    "websocket"
+  ],
+  "author": {
+    "name": "Nico Janssens",
+    "email": "nico.b.janssens@gmail.com"
+  },
+  "license": "MIT",
+  "engines" : {
+    "node" : ">=4.x.x"
+  },
+  "dependencies": {
+    "q": "^1.4.1",
+    "websocket": "^1.0.22",
+    "winston": "^2.1.1"
+  },
+  "devDependencies": {
+    "chai": "^3.5.0",
+    "hat": "0.0.3",
+    "mocha": "^2.4.4"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/nicojanssens/apprtc-socket-js.git"
+  }
+}
