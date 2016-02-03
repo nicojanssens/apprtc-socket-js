@@ -1,6 +1,6 @@
 {
   "name": "apprtc-socket",
-  "version": "0.0.1",
+  "version": "0.1.0",
   "description": "Socket for transferring messages via the AppRtc WebSocket server",
   "main": "index.js",
   "keywords": [
@@ -12,8 +12,8 @@
     "email": "nico.b.janssens@gmail.com"
   },
   "license": "MIT",
-  "engines" : {
-    "node" : ">=4.x.x"
+  "engines": {
+    "node": ">=4.x.x"
   },
   "dependencies": {
     "q": "^1.4.1",
