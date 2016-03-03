@@ -5,7 +5,7 @@
 ## Features
 
 - supports text message exchange between two peers identified by a unique key
-- offers callback and promised based API
+- offers callback and promise based API
 
 ## Install
 
