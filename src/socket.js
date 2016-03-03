@@ -5,7 +5,10 @@ var hash = require('./hash')
 var util = require('util')
 var Q = require('q')
 var WebSocketClient = require('websocket').client
-var winston = require('winston')
+
+var debug = require('debug')
+var debugLog = debug('apprtc-socket')
+var errorLog = debug('apprtc-socket:error')
 
 var origin = 'foo://bar'
 var url = 'wss://apprtc-ws.webrtc.org:443/ws'
@@ -29,7 +32,7 @@ var AppRtcSocket = function (myId, peerId) {
   // on websocket connection
   var self = this
   this._ws.on('connect', function (connection) {
-    winston.debug('[apprtc-socket] connected')
+    debugLog('[apprtc-socket] connected')
     self._connection = connection
     // on connection error
     self._connection.on('error', self._onFailure())
@@ -101,10 +104,10 @@ AppRtcSocket.prototype._register = function () {
 AppRtcSocket.prototype._onIncomingMessage = function () {
   var self = this
   return function (message) {
-    winston.debug('[apprtc-socket] incoming message')
+    debugLog('[apprtc-socket] incoming message')
     if (message.type === 'binary') {
       var binaryErrorMsg = '[apprtc-socket] not expecting to receive a binary message -- dropping on the floor'
-      winston.error(binaryErrorMsg)
+      errorLog(binaryErrorMsg)
       return
     }
     if (message.type === 'utf8') {
@@ -113,7 +116,7 @@ AppRtcSocket.prototype._onIncomingMessage = function () {
         self._onIncomingApprtcMessage(messageObject.msg, messageObject.error)
       } else {
         var formatErrorMsg = '[apprtc-socket] received message does not comply with expected format -- dropping on the floor'
-        winston.error(formatErrorMsg)
+        errorLog(formatErrorMsg)
         return
       }
     }
@@ -124,7 +127,7 @@ AppRtcSocket.prototype._onIncomingMessage = function () {
 AppRtcSocket.prototype._onIncomingApprtcMessage = function (message, error) {
   if (error) {
     var errorMsg = '[apprtc-socket] apprtc error: ' + error
-    winston.error(errorMsg)
+    errorLog(errorMsg)
     this.emit('error', errorMsg)
     return
   }
@@ -141,7 +144,7 @@ AppRtcSocket.prototype._onFailure = function () {
     }
     // fire error event
     var errorMsg = '[apprtc-socket] socket error: ' + error
-    winston.error(errorMsg)
+    errorLog(errorMsg)
     self.emit('error', errorMsg)
   }
 }

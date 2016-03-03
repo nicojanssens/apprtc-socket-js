@@ -2,12 +2,9 @@
 
 var hat = require('hat')
 var hash = require('../src/hash')
-var winston = require('winston')
 
 var chai = require('chai')
 var expect = chai.expect
-
-winston.level = 'debug'
 
 describe('#AppRTC-socket utils', function () {
   it('hash function should be commutative', function () {

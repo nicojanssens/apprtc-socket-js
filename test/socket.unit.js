@@ -2,9 +2,6 @@
 
 var hat = require('hat')
 var Socket = require('../src/Socket')
-var winston = require('winston')
-
-winston.level = 'debug'
 
 describe('#AppRTC-socket features', function () {
   this.timeout(5000)
@@ -29,14 +26,14 @@ describe('#AppRTC-socket features', function () {
     }
 
     socketAlice.on('message', function (message) {
-      winston.info('alice received response: ' + message)
+      console.log('alice received response: ' + message)
       if (messagesSent === testRuns) {
         socketAlice.closeP()
           .then(function () {
             return socketBob.closeP()
           })
           .then(function () {
-            winston.info("that's all folks")
+            console.log("that's all folks")
             done()
           })
           .catch(function (error) {
@@ -49,7 +46,7 @@ describe('#AppRTC-socket features', function () {
     })
 
     socketBob.on('message', function (message) {
-      winston.info('bob received request: ' + message)
+      console.log('bob received request: ' + message)
       sendReply()
     })
 

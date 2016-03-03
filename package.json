@@ -16,9 +16,9 @@
     "node": ">=4.x.x"
   },
   "dependencies": {
+    "debug": "^2.2.0",
     "q": "^1.4.1",
-    "websocket": "^1.0.22",
-    "winston": "^2.1.1"
+    "websocket": "^1.0.22"
   },
   "devDependencies": {
     "chai": "^3.5.0",
