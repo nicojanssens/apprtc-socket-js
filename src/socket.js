@@ -32,7 +32,7 @@ var AppRtcSocket = function (myId, peerId) {
   // on websocket connection
   var self = this
   this._ws.on('connect', function (connection) {
-    debugLog('[apprtc-socket] connected')
+    debugLog('connected')
     self._connection = connection
     // on connection error
     self._connection.on('error', self._onFailure())
@@ -104,9 +104,9 @@ AppRtcSocket.prototype._register = function () {
 AppRtcSocket.prototype._onIncomingMessage = function () {
   var self = this
   return function (message) {
-    debugLog('[apprtc-socket] incoming message')
+    debugLog('incoming message')
     if (message.type === 'binary') {
-      var binaryErrorMsg = '[apprtc-socket] not expecting to receive a binary message -- dropping on the floor'
+      var binaryErrorMsg = 'not expecting to receive a binary message -- dropping on the floor'
       errorLog(binaryErrorMsg)
       return
     }
@@ -115,7 +115,7 @@ AppRtcSocket.prototype._onIncomingMessage = function () {
       if (messageObject.msg !== undefined && messageObject.error !== undefined) {
         self._onIncomingApprtcMessage(messageObject.msg, messageObject.error)
       } else {
-        var formatErrorMsg = '[apprtc-socket] received message does not comply with expected format -- dropping on the floor'
+        var formatErrorMsg = 'received message does not comply with expected format -- dropping on the floor'
         errorLog(formatErrorMsg)
         return
       }
@@ -126,7 +126,7 @@ AppRtcSocket.prototype._onIncomingMessage = function () {
 // Incoming AppRTC message
 AppRtcSocket.prototype._onIncomingApprtcMessage = function (message, error) {
   if (error) {
-    var errorMsg = '[apprtc-socket] apprtc error: ' + error
+    var errorMsg = 'apprtc error: ' + error
     errorLog(errorMsg)
     this.emit('error', errorMsg)
     return
@@ -143,7 +143,7 @@ AppRtcSocket.prototype._onFailure = function () {
       clearTimeout(self._registrationTimer)
     }
     // fire error event
-    var errorMsg = '[apprtc-socket] socket error: ' + error
+    var errorMsg = 'socket error: ' + error
     errorLog(errorMsg)
     self.emit('error', errorMsg)
   }
