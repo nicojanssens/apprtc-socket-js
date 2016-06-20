@@ -4,7 +4,7 @@ var hat = require('hat')
 var Socket = require('../src/Socket')
 
 describe('#AppRTC-socket features', function () {
-  this.timeout(5000)
+  this.timeout(10000)
 
   it('two sockets should be able to ping-pong', function (done) {
     var aliceId = hat()
