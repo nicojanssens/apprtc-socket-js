@@ -23,7 +23,8 @@
   "devDependencies": {
     "chai": "^3.5.0",
     "hat": "0.0.3",
-    "mocha": "^2.4.4"
+    "mocha": "^2.4.4",
+    "publish": "^0.6.0"
   },
   "repository": {
     "type": "git",
