@@ -29,5 +29,9 @@
   "repository": {
     "type": "git",
     "url": "git://github.com/nicojanssens/apprtc-socket-js.git"
+  },
+  "scripts": {
+    "2npm": "publish",
+    "test": "./node_modules/.bin/mocha test/*.unit.js"
   }
 }
