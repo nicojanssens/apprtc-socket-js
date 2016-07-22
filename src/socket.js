@@ -5,10 +5,8 @@ var hash = require('./hash')
 var util = require('util')
 var Q = require('q')
 var WebSocketClient = require('websocket').client
-
-var debug = require('debug')
-var debugLog = debug('apprtc-socket')
-var errorLog = debug('apprtc-socket:error')
+var winston = require('winston')
+var winstonWrapper = require('winston-meta-wrapper')
 
 var origin = 'foo://bar'
 var url = 'wss://apprtc-ws.webrtc.org:443/ws'
@@ -27,12 +25,19 @@ var AppRtcSocket = function (myId, peerId) {
   this.myId = myId
   this.peerId = peerId
   this._ws = new WebSocketClient()
+  // logging
+  this._log = winstonWrapper(winston)
+  this._log.addMeta({
+    module: 'udp-hole-puncher',
+    senderId: myId,
+    receiverId: peerId
+  })
   // on websocket failure
   this._ws.on('connectionFailed', this._onFailure())
   // on websocket connection
   var self = this
   this._ws.on('connect', function (connection) {
-    debugLog('connected')
+    self._log.debug('connected')
     self._connection = connection
     // on connection error
     self._connection.on('error', self._onFailure())
@@ -104,10 +109,10 @@ AppRtcSocket.prototype._register = function () {
 AppRtcSocket.prototype._onIncomingMessage = function () {
   var self = this
   return function (message) {
-    debugLog('incoming message')
+    self._log.debug('incoming message')
     if (message.type === 'binary') {
       var binaryErrorMsg = 'not expecting to receive a binary message -- dropping on the floor'
-      errorLog(binaryErrorMsg)
+      self._log.error(binaryErrorMsg)
       return
     }
     if (message.type === 'utf8') {
@@ -116,7 +121,7 @@ AppRtcSocket.prototype._onIncomingMessage = function () {
         self._onIncomingApprtcMessage(messageObject.msg, messageObject.error)
       } else {
         var formatErrorMsg = 'received message does not comply with expected format -- dropping on the floor'
-        errorLog(formatErrorMsg)
+        self._log.error(formatErrorMsg)
         return
       }
     }
@@ -127,7 +132,7 @@ AppRtcSocket.prototype._onIncomingMessage = function () {
 AppRtcSocket.prototype._onIncomingApprtcMessage = function (message, error) {
   if (error) {
     var errorMsg = 'apprtc error: ' + error
-    errorLog(errorMsg)
+    this._log.error(errorMsg)
     this.emit('error', errorMsg)
     return
   }
@@ -144,7 +149,7 @@ AppRtcSocket.prototype._onFailure = function () {
     }
     // fire error event
     var errorMsg = 'socket error: ' + error
-    errorLog(errorMsg)
+    self._log.error(errorMsg)
     self.emit('error', errorMsg)
   }
 }
