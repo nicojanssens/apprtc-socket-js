@@ -28,7 +28,7 @@ var AppRtcSocket = function (myId, peerId) {
   // logging
   this._log = winstonWrapper(winston)
   this._log.addMeta({
-    module: 'udp-hole-puncher',
+    module: 'apprtc-socket',
     senderId: myId,
     receiverId: peerId
   })
