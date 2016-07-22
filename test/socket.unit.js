@@ -3,6 +3,9 @@
 var hat = require('hat')
 var Socket = require('../src/socket')
 
+var winston = require('winston')
+winston.level = 'debug'
+
 describe('#AppRTC-socket features', function () {
   this.timeout(10000)
 
