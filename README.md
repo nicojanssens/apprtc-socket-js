@@ -79,7 +79,7 @@ mySocket.connectP()
 
 ## API
 
-### `mySocket = socket(myId, peerId)`
+### `var mySocket = socket(myId, peerId)`
 Create a new AppRtcSocket connection. Both interacting peers must be identified by a unique key.
 
 ### `mySocket.connect()`
