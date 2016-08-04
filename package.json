@@ -22,17 +22,23 @@
     "winston-meta-wrapper": "^1.0.0"
   },
   "devDependencies": {
+    "browserify": "^13.1.0",
     "chai": "^3.5.0",
     "hat": "0.0.3",
     "mocha": "^2.4.4",
-    "publish": "^0.6.0"
+    "publish": "^0.6.0",
+    "uglify-js": "^2.7.0"
   },
   "repository": {
     "type": "git",
     "url": "git://github.com/nicojanssens/apprtc-socket-js.git"
   },
   "scripts": {
-    "2npm": "publish",
-    "test": "./node_modules/.bin/mocha test/*.unit.js"
+    "build": "browserify -s AppRtcSocket -e ./ | uglifyjs -c warnings=false -m > apprtc-socket.min.js",
+    "build-debug": "browserify -s AppRtcSocket -e ./ > apprtc-socket.debug.js",
+    "size": "npm run build && cat apprtc-socket.min.js | gzip | wc -c",
+    "test": "mocha test/*.unit.js",
+    "clean": "rm -f apprtc-socket.*.js && rm -rf node_modules",
+    "2npm": "publish"
   }
 }
