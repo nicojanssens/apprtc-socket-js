@@ -1,2 +1,4 @@
 node_modules
+apprtc-socket.min.js
+apprtc-socket.debug.js
 test/all*.sh
