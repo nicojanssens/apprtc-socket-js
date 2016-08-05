@@ -37,8 +37,7 @@
     "build": "browserify -s AppRtcSocket -e ./ | uglifyjs -c warnings=false -m > apprtc-socket.min.js",
     "build-debug": "browserify -s AppRtcSocket -e ./ > apprtc-socket.debug.js",
     "size": "npm run build && cat apprtc-socket.min.js | gzip | wc -c",
-    "test": "mocha test/*.unit.js",
-    "clean": "rm -f apprtc-socket.*.js && rm -rf node_modules",
-    "2npm": "publish"
+    "test-node": "mocha test/*.unit.js",
+    "clean": "rm -f apprtc-socket.*.js && rm -rf node_modules"
   }
 }
