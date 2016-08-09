@@ -8,6 +8,7 @@ Socket using the AppRtc WebSocket server to exchange messages between *two* peer
 ## Features
 - supports text message exchange between two peers identified by a unique key
 - offers callback and promise based API
+- can be browserified
 
 ## Install
 ```
