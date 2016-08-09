@@ -39,7 +39,7 @@
     "build": "browserify -s AppRtcSocket -e ./ | uglifyjs -c warnings=false -m > apprtc-socket.min.js",
     "build-debug": "browserify -s AppRtcSocket -e ./ > apprtc-socket.debug.js",
     "size": "npm run build && cat apprtc-socket.min.js | gzip | wc -c",
-    "test-browser": "zuul --local -- test/*.unit.js",
+    "test-browser": "zuul -- test/*.unit.js",
     "test-browser-local": "zuul --local -- test/*.unit.js",
     "test-browser-headless": "zuul --electron -- test/*.unit.js",
     "test-node": "mocha test/*.unit.js",
