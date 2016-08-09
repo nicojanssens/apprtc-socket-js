@@ -3,9 +3,6 @@
 var hat = require('hat')
 var Socket = require('../src/socket')
 
-var winston = require('winston')
-winston.level = 'debug'
-
 describe('#AppRTC-socket features', function () {
   this.timeout(10000)
 
@@ -23,7 +20,6 @@ describe('#AppRTC-socket features', function () {
     var sendRequest = function () {
       socketAlice.send(testQuestion)
     }
-
     var sendReply = function () {
       socketBob.send(testAnswer)
     }
@@ -47,7 +43,6 @@ describe('#AppRTC-socket features', function () {
         messagesSent++
       }
     })
-
     socketBob.on('message', function (message) {
       console.log('bob received request: ' + message)
       sendReply()
