@@ -1,4 +1,4 @@
-[![CircleCI](https://circleci.com/gh/nicojanssens/apprtc-socket-js.svg?style=svg)](https://circleci.com/gh/nicojanssens/apprtc-socket-js)
+[![CircleCI](https://circleci.com/gh/nicojanssens/apprtc-socket-js.svg?style=shield)](https://circleci.com/gh/nicojanssens/apprtc-socket-js)
 
 # AppRtc Socket
 
