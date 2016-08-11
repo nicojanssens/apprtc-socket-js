@@ -1,7 +1,7 @@
 'use strict'
 
 var hat = require('hat')
-var hash = require('../src/hash')
+var hash = require('../lib/hash')
 
 var chai = require('chai')
 var expect = chai.expect

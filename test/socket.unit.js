@@ -1,7 +1,7 @@
 'use strict'
 
 var hat = require('hat')
-var Socket = require('../src/socket')
+var Socket = require('../lib/socket')
 
 describe('#AppRTC-socket features', function () {
   this.timeout(10000)
