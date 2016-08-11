@@ -1,4 +1,5 @@
 [![CircleCI](https://circleci.com/gh/nicojanssens/apprtc-socket-js.svg?style=shield)](https://circleci.com/gh/nicojanssens/apprtc-socket-js)
+[![npm](https://img.shields.io/npm/v/apprtc-socket.svg)](https://npmjs.org/package/apprtc-socket)
 
 # AppRtc Socket
 
