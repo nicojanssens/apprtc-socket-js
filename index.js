@@ -1,7 +1,7 @@
-'use strict'
+const AppRtcSocket = require('./lib/socket');
 
-var AppRtcSocket = require('./lib/socket')
+const createSocket = (myId, peerId) => (
+  new AppRtcSocket(myId, peerId)
+);
 
-module.exports = function createSocket (myId, peerId) {
-  return new AppRtcSocket(myId, peerId)
-}
+module.exports = createSocket;
