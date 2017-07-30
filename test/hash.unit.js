@@ -1,15 +1,17 @@
-'use strict'
+// eslint-disable-next-line import/no-extraneous-dependencies
+const hat = require('hat');
+const hash = require('../lib/hash');
+// eslint-disable-next-line import/no-extraneous-dependencies
+const chai = require('chai');
 
-var hat = require('hat')
-var hash = require('../lib/hash')
+const expect = chai.expect;
 
-var chai = require('chai')
-var expect = chai.expect
-
+// eslint-disable-next-line no-undef
 describe('#AppRTC-socket utils', () => {
+  // eslint-disable-next-line no-undef
   it('hash function should be commutative', () => {
-    var value1 = hat()
-    var value2 = hat()
-    expect(hash(value1, value2)).to.equal(hash(value2, value1))
-  })
-})
+    const value1 = hat();
+    const value2 = hat();
+    expect(hash(value1, value2)).to.equal(hash(value2, value1));
+  });
+});
