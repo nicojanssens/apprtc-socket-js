@@ -3,7 +3,7 @@ const hat = require('hat');
 const Socket = require('../lib/socket');
 
 // eslint-disable-next-line no-undef
-describe('#AppRTC-socket features', () => {
+describe('#AppRTC-socket features', function () { // this.timeout() fails when using ES6's arrow functions #2018
   this.timeout(10000);
 
   // eslint-disable-next-line no-undef
