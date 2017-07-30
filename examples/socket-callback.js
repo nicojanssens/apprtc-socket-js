@@ -13,38 +13,38 @@ var testQuestion = 'What is the meaning of life?'
 var testAnswer = 'A movie.'
 
 // error handlers
-socketAlice.on('error', function (error) {
+socketAlice.on('error', error => {
   console.error(error)
 })
-socketBob.on('error', function (error) {
+socketBob.on('error', error => {
   console.error(error)
 })
 
 // ready handlers
-socketAlice.on('ready', function () {
+socketAlice.on('ready', () => {
   console.log("Alice's socket is ready")
   socketBob.connect()
 })
-socketBob.on('ready', function () {
+socketBob.on('ready', () => {
   console.log("Bob's socket is ready")
   socketAlice.send(testQuestion)
 })
 
 // message handlers
-socketAlice.on('message', function (message) {
+socketAlice.on('message', message => {
   console.log('Alice received answer: ' + message)
   socketAlice.close()
 })
-socketBob.on('message', function (message) {
+socketBob.on('message', message => {
   console.log('Bob received question: ' + message)
   socketBob.send(testAnswer)
 })
 
-socketAlice.on('close', function () {
+socketAlice.on('close', () => {
   console.log("Alice's socket has closed")
   socketBob.close()
 })
-socketBob.on('close', function () {
+socketBob.on('close', () => {
   console.log("Bob's socket has closed")
 })
 

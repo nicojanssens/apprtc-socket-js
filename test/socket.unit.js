@@ -6,7 +6,7 @@ var Socket = require('../lib/socket')
 describe('#AppRTC-socket features', function () {
   this.timeout(10000)
 
-  it('two sockets should be able to ping-pong', function (done) {
+  it('two sockets should be able to ping-pong', done => {
     var aliceId = hat()
     var bobId = hat()
     var socketAlice = new Socket(aliceId, bobId)
@@ -17,25 +17,23 @@ describe('#AppRTC-socket features', function () {
     var testRuns = 10
     var messagesSent = 0
 
-    var sendRequest = function () {
+    var sendRequest = () => {
       socketAlice.send(testQuestion)
     }
-    var sendReply = function () {
+    var sendReply = () => {
       socketBob.send(testAnswer)
     }
 
-    socketAlice.on('message', function (message) {
+    socketAlice.on('message', message => {
       console.log('alice received response: ' + message)
       if (messagesSent === testRuns) {
         socketAlice.closeP()
-          .then(function () {
-            return socketBob.closeP()
-          })
-          .then(function () {
+          .then(() => socketBob.closeP())
+          .then(() => {
             console.log("that's all folks")
             done()
           })
-          .catch(function (error) {
+          .catch(error => {
             done(error)
           })
       } else {
@@ -43,7 +41,7 @@ describe('#AppRTC-socket features', function () {
         messagesSent++
       }
     })
-    socketBob.on('message', function (message) {
+    socketBob.on('message', message => {
       console.log('bob received request: ' + message)
       sendReply()
     })
@@ -52,14 +50,12 @@ describe('#AppRTC-socket features', function () {
     socketBob.on('error', done)
 
     socketAlice.connectP()
-      .then(function () {
-        return socketBob.connectP()
-      })
-      .then(function () {
+      .then(() => socketBob.connectP())
+      .then(() => {
         sendRequest()
         messagesSent++
       })
-      .catch(function (error) {
+      .catch(error => {
         done(error)
       })
   })
