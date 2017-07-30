@@ -34,7 +34,7 @@
     "hat": "0.0.3",
     "mocha": "^3.2.0",
     "publish": "^0.6.0",
-    "uglify-js": "^2.7.0",
+    "uglify-es": "^3.0.27",
     "zuul": "^3.10.3"
   },
   "repository": {
