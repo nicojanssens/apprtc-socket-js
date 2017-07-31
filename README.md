@@ -20,63 +20,63 @@ npm install apprtc-socket
 
 ### Callbacks
 ```js
-var socket = require('apprtc-socket')
+const socket = require('apprtc-socket');
 
-var myId = 'foo' // replace with unique key
-var peerId = 'bar' // replace with unique key
+const myId = 'foo'; // replace with unique key
+const peerId = 'bar'; // replace with unique key
 
-var mySocket = socket(myId, peerId)
+const mySocket = socket(myId, peerId);
 // socket is connected and ready to use
-mySocket.on('ready', function() {
+mySocket.on('ready', () => {
   // send text message to peer
-  mySocket.send('test message')
+  mySocket.send('test message');
   // close socket
-  mySocket.close()
-})
-mySocket.on('message', function(message) {
+  mySocket.close();
+});
+mySocket.on('message', (message) => {
   // incoming text message
-})
-mySocket.on('close', function() {
+});
+mySocket.on('close', () => {
   // socket is closed
-})
-mySocket.on('error', function(error) {
+});
+mySocket.on('error', (error) => {
   // ooops
-})
+});
 
 // activate the connection
-mySocket.connect()
+mySocket.connect();
 ```
 
 ### Promises
 ```js
-var socket = require('apprtc-socket')
+const socket = require('apprtc-socket');
 
-var myId = 'foo' // replace with unique key
-var peerId = 'bar' // replace with unique key
+const myId = 'foo'; // replace with unique key
+const peerId = 'bar'; // replace with unique key
 
-var mySocket = socket(myId, peerId)
-mySocket.on('message', function(message) {
+const mySocket = socket(myId, peerId);
+mySocket.on('message', (message) => {
   // incoming text message
-})
-mySocket.on('error', function(error) {
+});
+mySocket.on('error', (error) => {
   // ooops
-})
+});
 
 // activate the connection
 mySocket.connectP()
   // socket is connected and ready to use
-  .then(function () {
+  .then(() => {
     // send text message to peer
-    mySocket.send('test message')
+    mySocket.send('test message');
     // close socket
-    return mySocket.closeP()
+    return mySocket.closeP();
   })
-  .then(function () {
+  .then(() => {
     // socket is closed
   })
-  .catch(function (error) {
+  .catch((error) => {
     // ooops
-  })
+  });
 ```
 
 ## API
