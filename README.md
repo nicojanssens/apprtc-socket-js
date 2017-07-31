@@ -102,16 +102,16 @@ Close a connection. Instead of firing a `close` event, this function returns a p
 
 ## Events
 
-### `mySocket.on('ready', function () {})`
+### `mySocket.on('ready', () => {})`
 Fired when the socket is ready to use.
 
-### `mySocket.on('message', function (message) {})`
+### `mySocket.on('message', (message) => {})`
 Received a message from the AppRtc server. `message` is always a `String`.
 
-### `mySocket.on('close', function () {})`   
+### `mySocket.on('close', () => {})`   
 Fired when the connection has closed.   
 
-### `mySocket.on('error', function () {})`
+### `mySocket.on('error', () => {})`
 Fired when a fatal error occurs.     
 
 ## Examples
